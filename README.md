@@ -98,6 +98,10 @@ Then fetch the biological priors:
 python scripts/fetch_priors.py
 ```
 
+The first rebuild from raw is slow — several minutes per cohort, most of it spent resolving
+~60k Ensembl IDs to gene symbols through mygene.info. The result is cached in
+`bio_priors/cache/ensembl2symbol.json`, so later cohorts and seeds are much faster.
+
 None of the prior resources are redistributed here. KEGG pathway membership (15 pathways) and
 TRRUST v2 are fetched automatically; miRTarBase 9.0 requires accepting its terms on the
 download page, so the script prints the exact URL, filter settings and target filename for a

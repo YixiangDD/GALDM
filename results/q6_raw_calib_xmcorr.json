@@ -1,0 +1,22 @@
+{
+  "CESC": {
+    "n_edges": 1938,
+    "raw_XM_Corr": 0.849,
+    "calibrated_XM_Corr": 0.9319
+  },
+  "COAD": {
+    "n_edges": 1620,
+    "raw_XM_Corr": 0.925,
+    "calibrated_XM_Corr": 0.9706
+  },
+  "HNSC": {
+    "n_edges": 1858,
+    "raw_XM_Corr": 0.9153,
+    "calibrated_XM_Corr": 0.9718
+  },
+  "KIRC": {
+    "n_edges": 1929,
+    "raw_XM_Corr": 0.9275,
+    "calibrated_XM_Corr": 0.9691
+  }
+}

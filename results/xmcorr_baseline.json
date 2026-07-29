@@ -1,0 +1,18 @@
+{
+  "CESC": {
+    "n_edges": 1938,
+    "SMOTE_XM_Corr": 0.8839
+  },
+  "COAD": {
+    "n_edges": 1620,
+    "SMOTE_XM_Corr": 0.9414
+  },
+  "HNSC": {
+    "n_edges": 1858,
+    "SMOTE_XM_Corr": 0.932
+  },
+  "KIRC": {
+    "n_edges": 1929,
+    "SMOTE_XM_Corr": 0.9503
+  }
+}

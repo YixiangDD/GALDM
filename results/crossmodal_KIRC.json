@@ -1,0 +1,9 @@
+{
+  "cancer": "KIRC",
+  "n_edges": 1929,
+  "XM_Corr_joint": 0.9701,
+  "XM_Corr_shuffled_pairing": 0.0709,
+  "perm_null_mean": -0.0007,
+  "perm_null_std": 0.1372,
+  "perm_p_value": 0.0004997501249375312
+}

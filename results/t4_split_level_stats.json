@@ -1,0 +1,154 @@
+{
+  "CESC": {
+    "Bio_FID": {
+      "GA-LDM_mean": 18.1407,
+      "GA-LDM_95CI": [
+        16.406,
+        19.8755
+      ],
+      "CTGAN_mean": 71.8094,
+      "paired_diff_mean": -53.6687,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0004,
+      "wilcoxon_p": 0.0625
+    },
+    "PCE": {
+      "GA-LDM_mean": 0.0797,
+      "GA-LDM_95CI": [
+        0.0754,
+        0.084
+      ],
+      "CTGAN_mean": 0.0987,
+      "paired_diff_mean": -0.019,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0035,
+      "wilcoxon_p": 0.0625
+    },
+    "TSTR": {
+      "GA-LDM_mean": 0.7721,
+      "GA-LDM_95CI": [
+        0.7592,
+        0.785
+      ],
+      "CTGAN_mean": 0.6884,
+      "paired_diff_mean": 0.0837,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0114,
+      "wilcoxon_p": 0.0625
+    }
+  },
+  "COAD": {
+    "Bio_FID": {
+      "GA-LDM_mean": 8.4533,
+      "GA-LDM_95CI": [
+        7.8458,
+        9.0608
+      ],
+      "CTGAN_mean": 37.9932,
+      "paired_diff_mean": -29.5399,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0,
+      "wilcoxon_p": 0.0625
+    },
+    "PCE": {
+      "GA-LDM_mean": 0.0695,
+      "GA-LDM_95CI": [
+        0.0662,
+        0.0727
+      ],
+      "CTGAN_mean": 0.0929,
+      "paired_diff_mean": -0.0234,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0037,
+      "wilcoxon_p": 0.0625
+    },
+    "TSTR": {
+      "GA-LDM_mean": 0.6212,
+      "GA-LDM_95CI": [
+        0.5771,
+        0.6653
+      ],
+      "CTGAN_mean": 0.6273,
+      "paired_diff_mean": -0.0061,
+      "GA-LDM_better_splits": "3/5",
+      "paired_t_p": 0.7839,
+      "wilcoxon_p": 1.0
+    }
+  },
+  "HNSC": {
+    "Bio_FID": {
+      "GA-LDM_mean": 7.3735,
+      "GA-LDM_95CI": [
+        6.2067,
+        8.5402
+      ],
+      "CTGAN_mean": 43.508,
+      "paired_diff_mean": -36.1346,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0001,
+      "wilcoxon_p": 0.0625
+    },
+    "PCE": {
+      "GA-LDM_mean": 0.0653,
+      "GA-LDM_95CI": [
+        0.0605,
+        0.0702
+      ],
+      "CTGAN_mean": 0.0812,
+      "paired_diff_mean": -0.0158,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0031,
+      "wilcoxon_p": 0.0625
+    },
+    "TSTR": {
+      "GA-LDM_mean": 0.7636,
+      "GA-LDM_95CI": [
+        0.7351,
+        0.7922
+      ],
+      "CTGAN_mean": 0.6152,
+      "paired_diff_mean": 0.1485,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0033,
+      "wilcoxon_p": 0.0625
+    }
+  },
+  "KIRC": {
+    "Bio_FID": {
+      "GA-LDM_mean": 6.2813,
+      "GA-LDM_95CI": [
+        5.09,
+        7.4727
+      ],
+      "CTGAN_mean": 35.9616,
+      "paired_diff_mean": -29.6803,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0,
+      "wilcoxon_p": 0.0625
+    },
+    "PCE": {
+      "GA-LDM_mean": 0.0643,
+      "GA-LDM_95CI": [
+        0.0613,
+        0.0673
+      ],
+      "CTGAN_mean": 0.0797,
+      "paired_diff_mean": -0.0154,
+      "GA-LDM_better_splits": "5/5",
+      "paired_t_p": 0.0,
+      "wilcoxon_p": 0.0625
+    },
+    "TSTR": {
+      "GA-LDM_mean": 0.6935,
+      "GA-LDM_95CI": [
+        0.6751,
+        0.7119
+      ],
+      "CTGAN_mean": 0.6701,
+      "paired_diff_mean": 0.0234,
+      "GA-LDM_better_splits": "3/5",
+      "paired_t_p": 0.1949,
+      "wilcoxon_p": 0.1975
+    }
+  }
+}

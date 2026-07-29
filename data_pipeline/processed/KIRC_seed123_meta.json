@@ -1,0 +1,38 @@
+{
+  "cancer": "KIRC",
+  "seed": 123,
+  "n_total": 512,
+  "n_genes": 2000,
+  "n_mirna": 200,
+  "n_train": 358,
+  "n_val": 77,
+  "n_test": 77,
+  "class_balance": [
+    308,
+    204
+  ],
+  "gene_ids_head": [
+    "ENSG00000002330.14",
+    "ENSG00000002745.13",
+    "ENSG00000002822.15",
+    "ENSG00000003400.15",
+    "ENSG00000003402.20",
+    "ENSG00000004897.12",
+    "ENSG00000004975.12",
+    "ENSG00000005339.15",
+    "ENSG00000005884.18",
+    "ENSG00000005961.19"
+  ],
+  "mirna_ids_head": [
+    "hsa-mir-1269a",
+    "hsa-mir-9-3",
+    "hsa-mir-9-2",
+    "hsa-mir-9-1",
+    "hsa-mir-375",
+    "hsa-mir-204",
+    "hsa-mir-217",
+    "hsa-mir-675",
+    "hsa-mir-653",
+    "hsa-mir-31"
+  ]
+}

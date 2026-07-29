@@ -1,0 +1,30 @@
+{
+  "CESC": {
+    "real_RDC_acc": 0.889,
+    "gen_RDC_acc": 0.879,
+    "real_margin": 0.539,
+    "gen_margin": 0.565,
+    "n_edges": 99
+  },
+  "COAD": {
+    "real_RDC_acc": 0.96,
+    "gen_RDC_acc": 0.949,
+    "real_margin": 0.53,
+    "gen_margin": 0.555,
+    "n_edges": 99
+  },
+  "HNSC": {
+    "real_RDC_acc": 0.848,
+    "gen_RDC_acc": 0.848,
+    "real_margin": 0.572,
+    "gen_margin": 0.567,
+    "n_edges": 99
+  },
+  "KIRC": {
+    "real_RDC_acc": 0.879,
+    "gen_RDC_acc": 0.879,
+    "real_margin": 0.583,
+    "gen_margin": 0.582,
+    "n_edges": 99
+  }
+}

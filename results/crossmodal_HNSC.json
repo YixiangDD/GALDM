@@ -1,0 +1,9 @@
+{
+  "cancer": "HNSC",
+  "n_edges": 1858,
+  "XM_Corr_joint": 0.9687,
+  "XM_Corr_shuffled_pairing": -0.1237,
+  "perm_null_mean": -0.0034,
+  "perm_null_std": 0.1377,
+  "perm_p_value": 0.0004997501249375312
+}

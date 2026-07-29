@@ -1,0 +1,15 @@
+{
+  "cancer": "KIRC",
+  "pathway": "HIF-1 signaling",
+  "real_activity_mean": [
+    3.5346148014068604,
+    3.5080251693725586
+  ],
+  "gen_activity_mean": [
+    3.533337898141163,
+    3.5100981277956924
+  ],
+  "real_mannwhitney_p": 0.008732030867974727,
+  "gen_mannwhitney_p": 0.058548227683245885,
+  "activity_distribution_distance": 0.001042321943755642
+}

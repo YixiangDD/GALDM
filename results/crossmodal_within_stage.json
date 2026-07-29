@@ -1,0 +1,30 @@
+{
+  "CESC": {
+    "n_edges": 1938,
+    "XM_Corr": 0.9316,
+    "within_stage_null_mean": 0.0113,
+    "within_stage_null_std": 0.1097,
+    "p_value": 0.0004997501249375312
+  },
+  "COAD": {
+    "n_edges": 1620,
+    "XM_Corr": 0.9703,
+    "within_stage_null_mean": 0.0515,
+    "within_stage_null_std": 0.1641,
+    "p_value": 0.0004997501249375312
+  },
+  "HNSC": {
+    "n_edges": 1858,
+    "XM_Corr": 0.9687,
+    "within_stage_null_mean": 0.0395,
+    "within_stage_null_std": 0.1348,
+    "p_value": 0.0004997501249375312
+  },
+  "KIRC": {
+    "n_edges": 1929,
+    "XM_Corr": 0.9701,
+    "within_stage_null_mean": 0.1268,
+    "within_stage_null_std": 0.1324,
+    "p_value": 0.0004997501249375312
+  }
+}

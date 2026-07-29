@@ -1,0 +1,86 @@
+{
+  "CESC": {
+    "majority_acc": 0.791,
+    "TRTR_real_only": {
+      "Acc": 0.814,
+      "BalAcc": 0.556,
+      "MacroF1": 0.547,
+      "AUROC": 0.422
+    },
+    "TSTR_synth_only": {
+      "Acc": 0.767,
+      "BalAcc": 0.485,
+      "MacroF1": 0.434,
+      "AUROC": 0.582
+    },
+    "augment_real+synth": {
+      "Acc": 0.767,
+      "BalAcc": 0.485,
+      "MacroF1": 0.434,
+      "AUROC": 0.477
+    }
+  },
+  "COAD": {
+    "majority_acc": 0.561,
+    "TRTR_real_only": {
+      "Acc": 0.727,
+      "BalAcc": 0.723,
+      "MacroF1": 0.723,
+      "AUROC": 0.715
+    },
+    "TSTR_synth_only": {
+      "Acc": 0.652,
+      "BalAcc": 0.641,
+      "MacroF1": 0.642,
+      "AUROC": 0.703
+    },
+    "augment_real+synth": {
+      "Acc": 0.652,
+      "BalAcc": 0.652,
+      "MacroF1": 0.65,
+      "AUROC": 0.678
+    }
+  },
+  "HNSC": {
+    "majority_acc": 0.773,
+    "TRTR_real_only": {
+      "Acc": 0.712,
+      "BalAcc": 0.484,
+      "MacroF1": 0.462,
+      "AUROC": 0.545
+    },
+    "TSTR_synth_only": {
+      "Acc": 0.727,
+      "BalAcc": 0.518,
+      "MacroF1": 0.509,
+      "AUROC": 0.494
+    },
+    "augment_real+synth": {
+      "Acc": 0.742,
+      "BalAcc": 0.551,
+      "MacroF1": 0.552,
+      "AUROC": 0.554
+    }
+  },
+  "KIRC": {
+    "majority_acc": 0.61,
+    "TRTR_real_only": {
+      "Acc": 0.805,
+      "BalAcc": 0.768,
+      "MacroF1": 0.78,
+      "AUROC": 0.76
+    },
+    "TSTR_synth_only": {
+      "Acc": 0.714,
+      "BalAcc": 0.706,
+      "MacroF1": 0.703,
+      "AUROC": 0.782
+    },
+    "augment_real+synth": {
+      "Acc": 0.688,
+      "BalAcc": 0.666,
+      "MacroF1": 0.668,
+      "AUROC": 0.777
+    }
+  }
+}

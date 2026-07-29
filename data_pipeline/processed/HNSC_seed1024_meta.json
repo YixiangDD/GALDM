@@ -1,0 +1,38 @@
+{
+  "cancer": "HNSC",
+  "seed": 1024,
+  "n_total": 440,
+  "n_genes": 2000,
+  "n_mirna": 200,
+  "n_train": 308,
+  "n_val": 66,
+  "n_test": 66,
+  "class_balance": [
+    96,
+    344
+  ],
+  "gene_ids_head": [
+    "ENSG00000002330.14",
+    "ENSG00000002745.13",
+    "ENSG00000002822.15",
+    "ENSG00000003400.15",
+    "ENSG00000003402.20",
+    "ENSG00000004897.12",
+    "ENSG00000004975.12",
+    "ENSG00000005339.15",
+    "ENSG00000005884.18",
+    "ENSG00000005961.19"
+  ],
+  "mirna_ids_head": [
+    "hsa-mir-206",
+    "hsa-mir-133a-1",
+    "hsa-mir-1-2",
+    "hsa-mir-1-1",
+    "hsa-mir-133a-2",
+    "hsa-mir-1269a",
+    "hsa-mir-133b",
+    "hsa-mir-767",
+    "hsa-mir-9-3",
+    "hsa-mir-9-1"
+  ]
+}

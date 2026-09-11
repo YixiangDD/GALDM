@@ -26,6 +26,8 @@ evaluation/       the 7 metrics, cross-modal correlation, plotting, xlsx export
 experiments/      one script per experiment in the paper
 scripts/          fetch_priors.py — pulls the third-party prior files
 tools/            helper scripts (repro check, GPU queue, figure regeneration)
+paper_figures/    the scripts that render the figures in the paper, plus the
+                  exporters that emit them as fully editable PowerPoint decks
 data_pipeline/processed/   the preprocessed dataset, 4 cohorts x 5 seeds (shipped)
 results/          the metric JSONs behind every reported number
 results/cells/    per-(cohort, seed, method) results, the split-level unit of analysis
@@ -42,8 +44,8 @@ you can inspect or re-plot any number without spending GPU time first.
 Python 3.10 or 3.11.
 
 ```bash
-git clone https://github.com/<user>/GA-LDM.git
-cd GA-LDM
+git clone https://github.com/YixiangDD/GALDM.git
+cd GALDM
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
 pip install -r requirements.txt
@@ -153,6 +155,19 @@ Two scripts default to a different seed set: `bio_readout.py` and `omicsgan_comp
 them up with the main tables. Note that the shipped cache covers only the five protocol seeds;
 any other seed is rebuilt from raw data, which requires the raw files.
 
+Two scripts write per-item dumps alongside the aggregate results, so figure panels can
+be redrawn without repeating a training run. Both write to their own filenames and never
+overwrite a published result:
+
+```bash
+python -m experiments.dump_edge_vectors            # -> results/edge_vectors_{CESC,KIRC}.json
+python -m experiments.interpretability_dump        # -> results/interpretability_KIRC_persample.json
+```
+
+`dump_edge_vectors.py` reuses the saved generated samples and needs no GPU.
+`interpretability_dump.py` retrains from scratch and does not cache; KIRC at the published
+setting takes about 12 minutes on an RTX 4070 Laptop. Both outputs are shipped in `results/`.
+
 ## Metrics
 
 Seven metrics, all in `evaluation/metrics.py`:
@@ -209,6 +224,37 @@ python -m experiments.omicsgan_compare        # omicsGAN comparison
 python -m experiments.ablation --mode both    # progressive + leave-one-out
 python -m experiments.visualize_all           # regenerate figures into results/figures/
 ```
+
+## Figures
+
+The figures in the paper are rendered by `paper_figures/`. Fig. 1 is a schematic and
+the rest read only the stored artifacts in `results/`, so all of them redraw in
+seconds on CPU, with no training and no raw data:
+
+```bash
+python paper_figures/fig1_overview.py       # Fig 1  architecture schematic
+python paper_figures/fig3_bioreadout.py     # Fig 3  biological fidelity
+python paper_figures/fig4_prior_novelty.py  # Fig 4  prior value + novelty audit
+python paper_figures/figS3_box.py           # Fig S3 per-sample HIF-1 activity
+```
+
+Output goes to `results/figures/paper/`.
+
+Figs 2 and S2 are the exception: they need generated samples, so they come from
+`experiments/figs_shared.py`, which trains all six methods on CESC (GPU). That
+script also writes the numeric dumps the exporters below use, and those dumps are
+shipped, so you do not have to run it.
+
+```bash
+python paper_figures/figs_to_pptx.py   # Figs 2, 3, 4, S1, S2, S3 -> .pptx
+python paper_figures/fig1_to_pptx.py   # Fig 1 -> .pptx
+python paper_figures/geomcheck.py      # numeric check on the Fig 1 export
+```
+
+These write one `.pptx` per figure into `results/figures/pptx/`
+(`GALDM_PPTX_DIR` overrides), in which every panel is a native PowerPoint chart
+and every label a separate text box — no embedded bitmaps, so a figure can be
+restyled or its data edited without rerunning anything. Requires `python-pptx`.
 
 ## Citation
 

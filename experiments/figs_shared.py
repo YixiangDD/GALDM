@@ -28,7 +28,7 @@ from configs import paths as _P
 RAW = _P.RAW_ROOT
 PROC = _P.PROCESSED_DIR
 FIG = _P.FIGURES_DIR
-METHODS = ["SMOTE", "CTGAN", "TabDDPM", "TabSyn", "scDiffusion", "GA-LDM"]  # TabDiff tracks TabDDPM closely here, omitted
+METHODS = ["GA-LDM", "SMOTE", "CTGAN", "TabDDPM", "TabSyn", "scDiffusion"]  # TabDiff tracks TabDDPM closely here, omitted
 
 
 def shared_umap_grid(cancer, real_m, gens, fd, real_ref=None):
@@ -43,6 +43,14 @@ def shared_umap_grid(cancer, real_m, gens, fd, real_ref=None):
         e = reducer.transform(g)
         proj[m] = e
         all_pts.append(e)
+    # dump the coordinates so the figure can be re-emitted as native, editable
+    # PowerPoint shapes without another training run (see paper_figures/)
+    import json as _json
+    _dump = {"real": real_emb.tolist(),
+             "gen": {m: proj[m].tolist() for m in proj}}
+    with open(os.path.join(fd, f"_umap_coords_{cancer}.json"), "w", encoding="utf-8") as _f:
+        _json.dump(_dump, _f)
+    print("saved umap coords", flush=True)
     allp = np.vstack(all_pts)
     xlim = (allp[:, 0].min() - 1, allp[:, 0].max() + 1)
     ylim = (allp[:, 1].min() - 1, allp[:, 1].max() + 1)
@@ -60,8 +68,7 @@ def shared_umap_grid(cancer, real_m, gens, fd, real_ref=None):
         ax.legend(fontsize=7, loc="upper right", framealpha=0.7)
     for ax in axes[len(methods):]:
         ax.axis("off")
-    fig.suptitle(f"{cancer}: shared-UMAP embedding (fitted once on real data; all panels share coordinates)",
-                 fontsize=12)
+    # no suptitle: the figure caption in the paper carries this text
     fig.tight_layout()
     out = os.path.join(fd, f"_shared_umap_{cancer}.png")
     plt.savefig(out, dpi=160); plt.close()
@@ -118,12 +125,25 @@ def heatmap_pce_grid(cancer, real_m, gens, pathway_mask, fd, pw_idx=0):
             pstr = "p<0.001" if p < 1e-3 else ("p=%.3f" % p)
             ttl = f"{name}\nPCE = {pceval:.3f}  RV = {rv:.2f} ({pstr})"
         ax.set_title(ttl, fontsize=9); ax.set_xticks([]); ax.set_yticks([])
-    for ax in axes[n:]:
-        ax.axis("off")
-    fig.suptitle(f"{cancer}: within-pathway gene-correlation "
-                 f"(PCE = Frobenius distance to real, lower better; RV = matrix similarity, higher better)",
-                 fontsize=10.5)
-    fig.colorbar(im, ax=axes.tolist(), fraction=0.02)
+    # the leftover grid cell hosts the colour bar, so no panel slot is left blank
+    spare = axes[n] if n < len(axes) else None
+    if spare is not None:
+        spare.axis("off")
+        cax = spare.inset_axes([0.30, 0.10, 0.075, 0.80])
+        cb = fig.colorbar(im, cax=cax)
+        cb.outline.set_linewidth(0.6)
+        cb.ax.tick_params(labelsize=8, length=2)
+        cb.set_label("Pearson correlation", fontsize=8.5)
+    fig.tight_layout()
+    # dump the plotted 40x40 submatrices so the panel can be re-emitted as
+    # native, editable PowerPoint shapes without another training run
+    import json as _json
+    _mats = {}
+    for name, X, _pv in panels:
+        _mats[name] = _corr_pw(X, idx).round(4).tolist()
+    with open(os.path.join(fd, f"_corr_mats_{cancer}.json"), "w", encoding="utf-8") as _f:
+        _json.dump({"gene_cols": [int(v) for v in idx], "mats": _mats}, _f)
+    print("saved corr mats", flush=True)
     out = os.path.join(fd, f"_heatmap_pce_{cancer}.png")
     plt.savefig(out, dpi=160); plt.close()
     print("saved", out, flush=True)

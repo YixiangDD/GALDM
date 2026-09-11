@@ -17,7 +17,7 @@ from configs import paths as _P
 
 RAW = _P.RAW_ROOT
 PROC = _P.PROCESSED_DIR
-FD = r"{_P.RESULTS_DIR}figures/CESC"
+FD = os.path.join(_P.FIGURES_DIR, "CESC")
 os.makedirs(FD, exist_ok=True)
 
 

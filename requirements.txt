@@ -19,3 +19,7 @@ xgboost==3.2.0
 matplotlib==3.8.2
 umap-learn==0.5.5
 openpyxl==3.1.5
+
+# Only needed by paper_figures/*_to_pptx.py, which export the figures as
+# fully editable PowerPoint decks. Everything else runs without it.
+python-pptx==1.0.2

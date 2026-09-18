@@ -43,8 +43,8 @@ def shared_umap_grid(cancer, real_m, gens, fd, real_ref=None):
         e = reducer.transform(g)
         proj[m] = e
         all_pts.append(e)
-    # dump the coordinates so the figure can be re-emitted as native, editable
-    # PowerPoint shapes without another training run (see paper_figures/)
+    # dump the coordinates so the panel can be redrawn or restyled later without
+    # repeating the training run that produced the samples
     import json as _json
     _dump = {"real": real_emb.tolist(),
              "gen": {m: proj[m].tolist() for m in proj}}
@@ -135,8 +135,8 @@ def heatmap_pce_grid(cancer, real_m, gens, pathway_mask, fd, pw_idx=0):
         cb.ax.tick_params(labelsize=8, length=2)
         cb.set_label("Pearson correlation", fontsize=8.5)
     fig.tight_layout()
-    # dump the plotted 40x40 submatrices so the panel can be re-emitted as
-    # native, editable PowerPoint shapes without another training run
+    # dump the plotted 40x40 submatrices so the panel can be redrawn or restyled
+    # later without repeating the training run that produced the samples
     import json as _json
     _mats = {}
     for name, X, _pv in panels:

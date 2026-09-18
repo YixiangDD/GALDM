@@ -26,8 +26,7 @@ evaluation/       the 7 metrics, cross-modal correlation, plotting, xlsx export
 experiments/      one script per experiment in the paper
 scripts/          fetch_priors.py — pulls the third-party prior files
 tools/            helper scripts (repro check, GPU queue, figure regeneration)
-paper_figures/    the scripts that render the figures in the paper, plus the
-                  exporters that emit them as fully editable PowerPoint decks
+paper_figures/    the scripts that render the figures in the paper
 data_pipeline/processed/   the preprocessed dataset, 4 cohorts x 5 seeds (shipped)
 results/          the metric JSONs behind every reported number
 results/cells/    per-(cohort, seed, method) results, the split-level unit of analysis
@@ -56,7 +55,7 @@ RTX 4090 (24 GB). The `--quick` preset runs on CPU; the full protocol does not.
 
 ## Data
 
-**The preprocessed dataset is included**, in `data_pipeline/processed/` (70 MB): all four
+**The preprocessed dataset is included**, in `data_pipeline/processed/` (~73 MB): all four
 cohorts at all five protocol seeds, already split, feature-selected and standardised, with
 the matching biological priors. Nothing else is needed to reproduce the published numbers —
 every experiment below runs straight from this cache:
@@ -227,34 +226,27 @@ python -m experiments.visualize_all           # regenerate figures into results/
 
 ## Figures
 
-The figures in the paper are rendered by `paper_figures/`. Fig. 1 is a schematic and
-the rest read only the stored artifacts in `results/`, so all of them redraw in
-seconds on CPU, with no training and no raw data:
+Every figure in the paper is rendered by `paper_figures/`. Fig. 1 is a schematic; the
+rest read only stored artifacts, so all of them redraw in seconds on CPU, with no
+training, no GPU and no raw data:
 
 ```bash
 python paper_figures/fig1_overview.py       # Fig 1  architecture schematic
+python paper_figures/fig2_shared_umap.py    # Fig 2  shared-UMAP embedding
 python paper_figures/fig3_bioreadout.py     # Fig 3  biological fidelity
 python paper_figures/fig4_prior_novelty.py  # Fig 4  prior value + novelty audit
+python tools/plot_pareto.py                 # Fig S1 coupling-weight Pareto front
+python paper_figures/figS2_corrmat.py       # Fig S2 within-pathway correlations
 python paper_figures/figS3_box.py           # Fig S3 per-sample HIF-1 activity
 ```
 
-Output goes to `results/figures/paper/`.
+Output goes to `results/figures/paper/` (`plot_pareto.py` writes to
+`results/figures/`).
 
-Figs 2 and S2 are the exception: they need generated samples, so they come from
-`experiments/figs_shared.py`, which trains all six methods on CESC (GPU). That
-script also writes the numeric dumps the exporters below use, and those dumps are
-shipped, so you do not have to run it.
-
-```bash
-python paper_figures/figs_to_pptx.py   # Figs 2, 3, 4, S1, S2, S3 -> .pptx
-python paper_figures/fig1_to_pptx.py   # Fig 1 -> .pptx
-python paper_figures/geomcheck.py      # numeric check on the Fig 1 export
-```
-
-These write one `.pptx` per figure into `results/figures/pptx/`
-(`GALDM_PPTX_DIR` overrides), in which every panel is a native PowerPoint chart
-and every label a separate text box — no embedded bitmaps, so a figure can be
-restyled or its data edited without rerunning anything. Requires `python-pptx`.
+Figs 2 and S2 are the two that depend on generated samples. They read the numeric
+dumps in `results/figures/CESC/`, which are shipped, so the panels redraw without a
+GPU. Regenerating those dumps from scratch means rerunning
+`experiments/figs_shared.py`, which trains all six methods on CESC and does need one.
 
 ## Citation
 

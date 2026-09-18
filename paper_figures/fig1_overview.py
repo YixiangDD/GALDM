@@ -1,8 +1,6 @@
 """Figure 1: overall architecture of GA-LDM.
 
-A schematic, so it reads no experiment artifacts. fig1_to_pptx.py instruments the
-drawing helpers below and replays them as native PowerPoint shapes; changing the
-axis limits or the helper signatures here requires updating that script too.
+A schematic, so it reads no experiment artifacts and runs on CPU in seconds.
 """
 import os
 import sys
@@ -18,10 +16,6 @@ from configs import paths as _P  # noqa: E402
 
 OUT = os.path.join(_P.FIGURES_DIR, "paper")
 os.makedirs(OUT, exist_ok=True)
-
-# Everything from the `C = {` palette below is replayed by fig1_to_pptx.py inside a
-# synthetic namespace holding only rbox/T/A/ax/np, so code past this point must not
-# reference modules other than np.
 
 plt.rcParams.update({
     'font.family': 'sans-serif',

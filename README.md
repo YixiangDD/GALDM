@@ -110,22 +110,6 @@ manual download; `ensembl2symbol.json` is built on first use from mygene.info. N
 content changes over time, so a fresh fetch may differ slightly from the snapshot behind the
 published numbers — the shipped cache is what reproduces those exactly.
 
-### One inconsistency in the published preprocessing
-
-Rebuilding from raw will not reproduce the paper's feature sets exactly, and the reason is
-worth stating plainly. For CESC, HNSC and KIRC the raw matrices were passed through an
-expression prefilter (~60,660 genes down to ~14,000) before the top-2000-by-variance
-selection; for COAD that prefilter was not applied, so its variance ranking was computed over
-all 60,660 genes. 174 of COAD's 2000 selected genes would not have survived the prefilter used
-for the other three cohorts, one of them zero in every sample (high variance from sparse
-outliers). The prefilter itself is not reproduced in this repository.
-
-This affects which genes enter COAD's feature set, not the protocol applied to them: splits,
-training, generation and evaluation are identical across cohorts, and every method within a
-cohort sees exactly the same features. The shipped cache preserves the selections actually
-used, so the published numbers reproduce; a rebuild from raw is internally consistent but will
-differ from them.
-
 ## Run
 
 ```bash
